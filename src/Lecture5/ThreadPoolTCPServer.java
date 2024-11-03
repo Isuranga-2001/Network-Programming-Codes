@@ -8,11 +8,11 @@ import java.util.concurrent.Executors;
 
 public class ThreadPoolTCPServer {
     public static void main(String[] args) throws IOException {
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+
         try (ServerSocket serverSocket = new ServerSocket(8888)){
             // connection initialization
             System.out.println("Listening on port 8888...");
-
-            ExecutorService executor = Executors.newFixedThreadPool(10);
 
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -30,6 +30,10 @@ public class ThreadPoolTCPServer {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+        finally {
+            // shutdown the executor service
+            executor.shutdown();
         }
     }
 }
