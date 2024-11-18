@@ -36,7 +36,7 @@ public class MultiThreadTCPServer {
         }
     }
 
-    protected static void handleRequest(Socket clientSocket) {
+    public static void handleRequest(Socket clientSocket) {
         // data communication
         BufferedReader reader = null;
 
