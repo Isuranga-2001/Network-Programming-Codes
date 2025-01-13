@@ -52,7 +52,7 @@ public class EchoServer {
                         clientChannel.configureBlocking(false);
 
                         // Register the client channel with the selector for read events
-                        clientChannel.register(selector, SelectionKey.OP_ACCEPT);
+                        clientChannel.register(selector, SelectionKey.OP_READ);
                         System.out.println("Connected to Client: " + clientChannel.getRemoteAddress());
                     }
                     else if (key.isReadable()){
